@@ -62,7 +62,7 @@ public class AliTradeController {
         //请求
         String result = alipayClient.pageExecute(alipayRequest).getBody();
 
-        //输出
+        //输出 -> 重定向到支付宝支付页面
         response.setContentType("text/html; charset=utf-8");
         response.setCharacterEncoding("utf-8");
         ServletOutputStream out = response.getOutputStream();
@@ -290,7 +290,7 @@ public class AliTradeController {
 
             out.write(("trade_no:"+trade_no+"<br/>out_trade_no:"+out_trade_no+"<br/>total_amount:"+total_amount).getBytes());
         }else {
-            out.println("验签失败");
+            out.println("sign error");
         }
     }
 }
